@@ -21,6 +21,14 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function dashboard(){
+        if(auth()->user()->hasRole('admin')){
+            return view('admindashboard');
+        } elseif(auth()->user()->hasRole('todolistuser')){
+            return view('userdashboard');
+        };
+    }
+
     /**
      * Update the user's profile information.
      */
